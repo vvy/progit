@@ -52,7 +52,7 @@ Git 初始化了 `objects 目錄`，同時在該目錄下建立了 `pack` 和 `i
 	$ echo 'test content' | git hash-object -w --stdin
 	d670460b4b4aece5915caf5c68d12f560a9fe3e4
 
-參數 `-w` 指示 `hash-object` 命令保存 (資料) 物件，若不指定這個參數該命令僅僅回傳鍵值。`--stdin` 指定從標準輸入裝置 (stdin) 來讀取內容，若不指定這個參數，`hash-object` 就需要指定一個要保存的檔案路徑。該命令輸出長度為 40 個字元的雜湊值(checksum hash)。這是個 SHA-1 雜湊值──其值為要保存的資料加上你馬上會瞭解到的一種頭資訊(header)的雜湊值。現在可以查看到 Git 已經保存了資料： 
+參數 `-w` 指示 `hash-object` 命令保存 (資料) 物件，若不指定這個參數該命令僅僅回傳鍵值。`--stdin` 指定從標準輸入裝置 (stdin) 來讀取內容，若不指定這個參數，`hash-object` 就需要指定一個要讀取的檔案路徑。該命令輸出長度為 40 個字元的雜湊值(checksum hash)。這是個 SHA-1 雜湊值──其值為要保存的資料加上你馬上會瞭解到的一種頭資訊(header)的雜湊值。現在可以查看到 Git 已經保存了資料： 
 
 	$ find .git/objects -type f
 	.git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4
@@ -449,7 +449,7 @@ Git 用 zlib 壓縮檔案內容，因此這些檔並沒有佔用太多空間，�
 	100644 blob 9bc1dc421dcd51b4ac296e3e5b6e2a99cf44391e      repo.rb
 	100644 blob e3f094f522629ae358806b17daf78246c27c007b      test.txt
 
-然後可以用 `git cat-file` 命令查看這個物件有多大： 
+然後可以查看這個物件有多大： 
 
 	$ du -b .git/objects/9b/c1dc421dcd51b4ac296e3e5b6e2a99cf44391e
 	4102	.git/objects/9b/c1dc421dcd51b4ac296e3e5b6e2a99cf44391e

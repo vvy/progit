@@ -52,7 +52,7 @@ Git 初始化了 `objects` 目录，同时在该目录下创建了 `pack` 和 `i
 	$ echo 'test content' | git hash-object -w --stdin
 	d670460b4b4aece5915caf5c68d12f560a9fe3e4
 
-参数 `-w` 指示 `hash-object` 命令存储 (数据) 对象，若不指定这个参数该命令仅仅返回键值。`--stdin` 指定从标准输入设备 (stdin) 来读取内容，若不指定这个参数则需指定一个要存储的文件的路径。该命令输出长度为 40 个字符的校验和。这是个 SHA-1 哈希值──其值为要存储的数据加上你马上会了解到的一种头信息的校验和。现在可以查看到 Git 已经存储了数据：
+参数 `-w` 指示 `hash-object` 命令存储 (数据) 对象，若不指定这个参数该命令仅仅返回键值。`--stdin` 指定从标准输入设备 (stdin) 来读取内容，若不指定这个参数则需指定一个要读取的文件的路径。该命令输出长度为 40 个字符的校验和。这是个 SHA-1 哈希值──其值为要存储的数据加上你马上会了解到的一种头信息的校验和。现在可以查看到 Git 已经存储了数据：
 
 	$ find .git/objects -type f
 	.git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4
@@ -449,7 +449,7 @@ Git 用 zlib 压缩文件内容，因此这些文件并没有占用太多空间�
 	100644 blob 9bc1dc421dcd51b4ac296e3e5b6e2a99cf44391e      repo.rb
 	100644 blob e3f094f522629ae358806b17daf78246c27c007b      test.txt
 
-然后可以用 `git cat-file` 命令查看这个对象有多大：
+然后可以查看这个对象有多大：
 
 	$ du -b .git/objects/9b/c1dc421dcd51b4ac296e3e5b6e2a99cf44391e
 	4102	.git/objects/9b/c1dc421dcd51b4ac296e3e5b6e2a99cf44391e
